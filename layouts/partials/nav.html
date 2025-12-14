@@ -1,7 +1,9 @@
 {{ range .Site.Menus.main.ByWeight }}
   <a href="{{ .URL }}">{{ .Name }}</a>
 {{ end }}
-<a href='{{ absURL "index.xml" }}'>RSS</a>
+{{ end }} {{ with .OutputFormats.Get "RSS" }}
+  <a href="{{ .RelPermalink }}">RSS</a>
+{{ end }}
 
 <!-- Convert this page's translations into a dict -->
 {{ $translations := dict }}
